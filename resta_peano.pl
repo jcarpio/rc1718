@@ -8,4 +8,4 @@
 % P(no)
 % P(n-1) -> P(n)
 resta(X, 0, X).
-resta(X, s(Y), s(Z)):- resta(X, Y, Z).
+resta(X, s(Y), Z):- resta(X, Y, s(Z)).
