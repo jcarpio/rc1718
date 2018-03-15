@@ -49,6 +49,21 @@ producto(X, s(Y), Z2):-
 % ejemplo de ejecucion:
 % d2p(12,Z), producto(X,Y, Z), p2d(X, X2), p2d(Y, Y2).
 
+%menor(?X, ?Y)
+% Es cierto cuando X es menor que Y en
+% aritmética de Peano.
+menor(0, s(_)).
+menor(s(X), s(Y)):- menor(X, Y).
+
+%mayor(?X, ?Y)
+% Es cierto si X es mayor que Y
+mayor(s(_), 0).
+mayor(s(X), s(Y)):- mayor(X, Y).
+ 
+% mayor_o_igual(X, Y)
+% Es cierto si X es mayor o igual que Y
+mayor_o_igual(X, X).
+mayor_o_igual(X, Y):- mayor(X, Y). 
 
 % divide(?X, ?Y, ?Z, ?Resto)
 % Es cierto si Z unifica con la división entera
@@ -59,7 +74,9 @@ producto(X, s(Y), Z2):-
 % 1) P(no)
 % 2) P(n-1) -> P(n)
 
-
+divide(X, Y, 0, X):- menor(X, Y).
+divide(X, Y, s(Z), R):- mayor_o_igual(X,Y), 
+   resta(X, Y, X2), divide(X2, Y, Z, R).
 
 
 
