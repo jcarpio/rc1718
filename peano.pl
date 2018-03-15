@@ -50,6 +50,21 @@ producto(X, s(Y), Z2):-
 % d2p(12,Z), producto(X,Y, Z), p2d(X, X2), p2d(Y, Y2).
 
 
+% divide(?X, ?Y, ?Z, ?Resto)
+% Es cierto si Z unifica con la división entera
+% de X entre Y y Resto unifica con el resto en
+% aritmética de Peano. 
+% X será mayor que Y.
+
+% 1) P(no)
+% 2) P(n-1) -> P(n)
+
+
+
+
+
+
+
 
 
 
