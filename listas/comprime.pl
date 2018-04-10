@@ -5,6 +5,10 @@
 %   en formato comprimido:
 % Ejemplo: [a,a,a,b,b,c] -> [(a,3),(b,3),(c,1)]
 %---------------------------------------
+%
+% Variantes:
+% 1. comprime([a,a,a,b,b,c], [(a,3), (b,2), c]
+% 2. comprime([a,a,a,b,b,c], [a-3, b-2, c]
 
 comprime([], []).
 comprime([E], [(E,1)]).
