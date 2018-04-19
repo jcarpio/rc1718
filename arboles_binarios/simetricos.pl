@@ -3,7 +3,7 @@
 % Es cierto cuando R unifica con el árbol A
 % invertido
 invertir(nil, nil).
-invertir(a(E, HI, HD), a(E, RD, RI):-
+invertir(a(E, HI, HD), a(E, RD, RI)):-
   invertir(HI, RI),
   invertir(HD, RD).
 
