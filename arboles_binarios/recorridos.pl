@@ -1,3 +1,5 @@
+:- include('crea_arbol_lista.pl').
+
 % inorden(+A, -R)
 % Es cierto cuando R unifica con el recorrido
 % en inorden del árbol A
@@ -30,10 +32,15 @@ postorden(a(E, HI, HD), R):-
   postorden(HD, RD),
   append([RI, RD, [E]], R).
 
+% anchura(+A, -R)
+% Es cierto cuando R unifica con el recorrido
+% en anchura del árbol A
+
+anchura(nil, []).
+% anchura(a(E, HI, HD),  ):-
+%   anchura(
+
 
 arbol1(  
 a('+', a(1,nil,nil), a('*', a(2,nil,nil), a(3,nil,nil)))
-).
-
-
 ).

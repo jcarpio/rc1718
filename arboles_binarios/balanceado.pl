@@ -1,3 +1,4 @@
+:- use_module(crea_arbol_lista).
 
 % balanceado(+A)
 % Es cierto si para todo nodo, la diferencia de 
