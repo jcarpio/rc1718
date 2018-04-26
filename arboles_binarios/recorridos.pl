@@ -37,7 +37,6 @@ bin2gen(a(E, HI, HD), a(E, [RI, RD])):-
   HI \= nil, HD \= nil,
   bin2gen(HI, RI),
   bin2gen(HD, RD).
-
 bin2gen(a(E, HI, nil), a(E, [RI])):-
   bin2gen(HI, RI).
 bin2gen(a(E, nil, HD), a(E, [RD])):-
