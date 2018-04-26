@@ -1,5 +1,5 @@
-:- include('crea_arbolg.pl').
-:- include('ejemplos_ag.pl').
+:- ensure_loaded('crea_arbolg.pl').
+:- ensure_loaded('ejemplos_ag.pl').
 
 % cuenta_hojas_ag(+A, -N)
 % Es cierto cuando N unifica con el número de hojas
@@ -15,5 +15,5 @@ cuenta_hojas_ag([],0).
 
 cuenta_hojas_ag([Cab|Resto], R):-
 	cuenta_hojas_ag(Cab, RCab),
-	cuenta_hojas(Resto, RResto),
+	cuenta_hojas_ag(Resto, RResto),
 	R is RCab + RResto.
