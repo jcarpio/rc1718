@@ -12,12 +12,3 @@ altura_ag([Ca|Resto], R):-
   altura_ag(Ca, RCa),
   R is max(RCa, RResto).
 
-arbol1(
-     a(1, [a(2,[a(3,[a(4,[])])])])
-     ).
-
-arbol2(
-     a(1, [a(2,[a(3,[a(4,[])])]), 
-           a(5,[a(6,[a(7,[a(8,[a(9,[])])])])])
-          ])
-     ).
