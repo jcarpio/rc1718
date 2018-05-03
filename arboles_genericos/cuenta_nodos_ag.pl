@@ -1,4 +1,4 @@
-:- include('crea_arbolg.pl').
+:- ensure_loaded('crea_arbolg.pl').
 
 % cuenta_nodos_ag(+A, -N)
 % Es cierto cuando N unifica con el número de nodos
