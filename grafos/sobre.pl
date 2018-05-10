@@ -22,6 +22,16 @@ conectado(g(_, A), Ini, Fin):-
 
 grafo1(g([a,b,c,d], [a(a,b), a(b,c), a(c,d), a(d,b)])).
 
+% sobre
+%      a
+%     / \
+%    /   \
+%   /     \
+% b ------- c
+%   |     |
+%   |     |
+% d ------- e
+
 grafo2(g([a,b,c,d,e], 
         [a(a,b), a(a,c), a(b,c), a(b,d),
          a(b,e), a(c,d), a(c,e), a(d,e) 
