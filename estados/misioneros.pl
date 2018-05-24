@@ -33,26 +33,44 @@ pasar(0,2,dch).
 pasar(1,1,izq).
 pasar(1,1,dch).
 
-mov(pasar(M, C, izq), estado(MI,CI, dch), estado(MD, CD, izq)):-
-  pasar(M,C,izq),
-  NT is M + C, NT =< 2, NT >= 1,
-  M =< MI, C =< CI, 
-  MD is MI + M, CD is CI + C.
+valido(estado(1,1,_)).
+valido(estado(3,0,_)).
+valido(estado(3,1,_)).
+valido(estado(3,2,_)).
+valido(estado(3,3,_)).
+valido(estado(2,2,_)).
+valido(estado(0,0,_)).
+valido(estado(0,1,_)).
+valido(estado(0,2,_)).
+valido(estado(0,3,_)).
+ 
 
-mov(pasar(M, C, dch), estado(MI, CI, izq), estado(MD, CD, dch)):-
+mov(pasar(M, C, dch), estado(MI, CI, izq), estado(MI2, CI2, dch)):-
   pasar(M,C,dch),
   NT is M + C, NT =< 2, NT >= 1,
   M =< MI, C =< CI, 
-  MD is MI -M, CD is CI - C.
+  MI2 is MI - M, CI2 is CI - C,
+  MI2 >= CI2, MI2 =< 3, CI2 =< 3,
+  valido(estado(MI2, CI2, _)).
+  
+
+mov(pasar(M, C, izq), estado(MI,CI, dch), estado(MI2, CI2, izq)):-
+  pasar(M,C,izq),
+  NT is M + C, NT =< 2, NT >= 1,
+  M =< MI, C =< CI, 
+  MI2 is MI + M, CI2 is CI + C,
+  MI2 >= CI2, MI2 =< 3, CI2 =< 3,
+  valido(estado(MI2, CI2, _)).
+
 
 /* camino(+Estado_inicial, +Estado_final, +Visitados, -Camino)
 es cierto cuando Estado_inicial y Estado_final unifican con estados válido, Vi
 sitados unifica con una lista de estados visitados. */
 
-camino(Inicio, Inicio, _, []).
-camino(Inicio, Fin, Visitados, [Mov|Camino]):-
-  length(Visitados, L), L < 10,
+camino(Inicio, Inicio, _, [], [Inicio]).
+camino(Inicio, Fin, Visitados, [Mov|Camino], [Inicio|CaminoE]):-
+  length(Visitados, L), L < 12,
   mov(Mov, Inicio, Int),
   \+ member(Int, Visitados),
-  camino(Int, Fin, [Int|Visitados], Camino).
+  camino(Int, Fin, [Int|Visitados], Camino, CaminoE).
 
