@@ -47,19 +47,22 @@ valido(estado(0,3,_)).
 
 mov(pasar(M, C, dch), estado(MI, CI, izq), estado(MI2, CI2, dch)):-
   pasar(M,C,dch),
-  NT is M + C, NT =< 2, NT >= 1,
-  M =< MI, C =< CI, 
-  MI2 is MI - M, CI2 is CI - C,
-  MI2 >= CI2, MI2 =< 3, CI2 =< 3,
+  % NT is M + C, NT =< 2, NT >= 1,
+  M =< MI, C =< CI, % no pasar más de los que hay a la izquierda
+  MI2 is MI - M, CI2 is CI - C, % lo que queda a la izq
+  % MI2 >= CI2, 
+  MI2 =< 3, CI2 =< 3, 
   valido(estado(MI2, CI2, _)).
   
 
 mov(pasar(M, C, izq), estado(MI,CI, dch), estado(MI2, CI2, izq)):-
   pasar(M,C,izq),
-  NT is M + C, NT =< 2, NT >= 1,
-  M =< MI, C =< CI, 
-  MI2 is MI + M, CI2 is CI + C,
-  MI2 >= CI2, MI2 =< 3, CI2 =< 3,
+  % NT is M + C, NT =< 2, NT >= 1,
+  MD is 3 - MI, CD is 3 - CI, 
+  M =< MD, C =< CD, % no pasar más de lo que hay a la derecha
+  MI2 is MI + M, CI2 is CI + C, % nuevos misioneros y canibale a la izq
+  % MI2 >= CI2, 
+  MI2 =< 3, CI2 =< 3,
   valido(estado(MI2, CI2, _)).
 
 
@@ -69,7 +72,7 @@ sitados unifica con una lista de estados visitados. */
 
 camino(Inicio, Inicio, _, [], [Inicio]).
 camino(Inicio, Fin, Visitados, [Mov|Camino], [Inicio|CaminoE]):-
-  length(Visitados, L), L < 12,
+  length(Visitados, L), % L < 12,
   mov(Mov, Inicio, Int),
   \+ member(Int, Visitados),
   camino(Int, Fin, [Int|Visitados], Camino, CaminoE).
