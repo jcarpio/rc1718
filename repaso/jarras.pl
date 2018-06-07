@@ -33,6 +33,17 @@ camino(Ei, Ef, Visitados, [Mov|Camino]):-
 
 % camino(estado(0,0), estado(_, 4), [estado(0,0)], Camino). 
 
+comparar(<, L1, L2):- length(L1, Long1), length(L2, Long2), 
+  Long1 < Long2.
+comparar(>, L1, L2):- length(L1, Long1), length(L2, Long2), 
+  Long1 > Long2.
+comparar(=, L1, L2):- length(L1, Long1), length(L2, Long2), 
+  Long1 = Long2.
+
+menor_camino(C, L):- 
+  bagof(Camino, camino(estado(0,0), estado(_,4), [estado(0,0)], Camino), B),
+  predsort(comparar, B, [C|_]), length(C,L).
+
 
 
 
